@@ -12,8 +12,9 @@ class test_bms_stream(unittest.TestCase):
         self.assertTrue(stream_bms_data.print_to_consol({}, 'json') == "Sensor readings are Empty" )
 
 if __name__ == '__main__':
+    unittest.main()
     min_max_range = stream_bms_data.get_min_max_range(stream_bms_data.BMS_allowed_range)
     fields = stream_bms_data.get_bms_fields(stream_bms_data.BMS_allowed_range)
     stream_bms_data.plugin_sensor_stream(min_max_range, stream_bms_data.stream_limit, fields)
-    unittest.main()
+    
     
