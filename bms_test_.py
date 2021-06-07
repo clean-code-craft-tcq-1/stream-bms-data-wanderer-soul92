@@ -15,5 +15,8 @@ class test_bms_stream(unittest.TestCase):
         self.assertTrue(stream_bms_data.print_to_consol({'temperature': 44, 'soc': 70, 'charge_rate': 0}, 'json') )
 
 if __name__ == '__main__':
-  unittest.main()
+    unittest.main()
+    min_max_range = get_min_max_range(BMS_allowed_range)
+    fields = get_bms_fields(BMS_allowed_range)
+    plugin_sensor_stream(min_max_range, stream_limit, fields)
     
