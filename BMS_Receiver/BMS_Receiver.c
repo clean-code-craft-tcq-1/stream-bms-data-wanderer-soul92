@@ -48,10 +48,10 @@ void receiveConsoleData_v()
         rxDataDecoding(rxBuffer_a , tempstr_a ,tempBuff_i,strtIdx);
 	
 	/*Decoding charge rate data*/         
-	rxDataDecoding(rxBuffer_a , chargeratestr_a ,chargerateBuff_i,strtIdx);
+	//rxDataDecoding(rxBuffer_a , chargeratestr_a ,chargerateBuff_i,strtIdx);
 	/*Decoding soc data*/ 
 	strtIdx = 7;      
-	rxDataDecoding(rxBuffer_a , socstr_a ,socBuff_i,strtIdx);     
+	//rxDataDecoding(rxBuffer_a , socstr_a ,socBuff_i,strtIdx);     
        
 		    
     
@@ -66,9 +66,9 @@ void receiveConsoleData_v()
         // }  
     }
   
-  printf("rx soc data is %d\n", socBuff_i[0]);
-	printf("rx soc data is %d\n", socBuff_i[3]);    
-         printf("rx soc data is %d\n", socBuff_i[14]);
+  //printf("rx soc data is %d\n", socBuff_i[0]);
+	//printf("rx soc data is %d\n", socBuff_i[3]);    
+      //   printf("rx soc data is %d\n", socBuff_i[14]);
     /* Assume first element as maximum and minimum */
    maxValue_i = tempBuff_i[0];
    minValue_i = tempBuff_i[0];
