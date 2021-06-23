@@ -15,8 +15,7 @@ if __name__ == '__main__':
     min_max_range = stream_bms_data.get_min_max_range(stream_bms_data.BMS_allowed_range)
     fields = stream_bms_data.get_bms_fields(stream_bms_data.BMS_allowed_range)
     stream_bms_data.plugin_sensor_stream(min_max_range, stream_bms_data.stream_limit, fields)
-    #print("confirm_test_cases")
-    
+    print("confirm_test_cases")
     unittest.main()
     
     
