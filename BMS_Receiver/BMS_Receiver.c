@@ -13,8 +13,6 @@
 /*------ Project includes -------*/
 #include "BMS_Receiver.h"
 
-char* substring(char *destination, const char *source, int beg, int n);
-
 void receiveConsoleData_v()
 {
   char rxBuffer[1000] = {0};
@@ -62,7 +60,7 @@ void receiveConsoleData_v()
   {
    start =7;
    //printf("rx temp data is %s\n", ret);
-   substring(destination, ret, start, len);
+   findingsubstring_p(destination, ret, start, len);
    //ret2 = strtok(ret, ": ");
    //printf("rx soc data is %s\n", destination);
     soc[index1++] = atoi(destination);
@@ -110,24 +108,24 @@ void receiveConsoleData_v()
 }
 
 // Function to implement substring function in C
-char* substring(char *destination, const char *source, int beg, int n)
+char* findingsubstring_p (char *dest, const char *src, int stIndx, int len);
 {
     // extracts `n` characters from the source string starting from `beg` index
     // and copy them into the destination string
-    while (n > 0)
+    while (len > 0)
     {
-        *destination = *(source + beg);
+        *dest = *(src + stIndx);
  
-        destination++;
-        source++;
-        n--;
+        dest++;
+        src++;
+        len--;
     }
  
     // null terminate destination string
-    *destination = '\0';
+    *dest = '\0';
  
     // return the destination string
-    return destination;
+    return dest;
 }
 int  main()
 {
