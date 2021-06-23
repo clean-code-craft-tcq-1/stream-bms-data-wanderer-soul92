@@ -9,4 +9,4 @@
 void receiveConsoleData_v(void);
 char* findingsubstring_p (char *dest, const char *src, int stIndx, int len);
 void  computeMinMax_v (int currentValue[], int *maxValue, int *minValue);
-int   computeAverage_v(int currentValue[], int NumofValues);
+float computeAverage_f(int currentValue[], int NumofValues);
