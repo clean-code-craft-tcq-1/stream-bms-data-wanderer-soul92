@@ -100,7 +100,7 @@ void rxDataDecoding(char *rxBuffer, char *tempstr ,int *tempBuff ,int strtIdx)
   {
     findingsubstring_p(destBuff_a, occrnceRet_p, strtIdx, len);
     tempBuff[index] = atoi(destBuff_a);
-     printf("rx destBuff_a data is %s\n", destBuff_a[index]);
+   //  printf("rx destBuff_a data is %s\n", destBuff_a[index]);
     
     index = index + 1;
     //printf("rx temp2 data is %d\n", tempBuff[index]); 
