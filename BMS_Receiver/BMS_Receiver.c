@@ -114,23 +114,25 @@ char* findingsubstring_p (char *dest, const char *src, int stIndx, int len);
     return dest;
 }
 
-void  computeMinMax(int currentValue[], int *maxValue, int *minValue)
+void  computeMinMax(int currentVal_a[], int *maxValue, int *minValue)
 {
+  int i;
+  
    for(i=1; i<15; i++)
     {
         /* If current element is greater than max */
-      if(Temp[i] > max)
+      if(currentVal_a[i] > *maxValue)
       {
-       max = Temp[i];
+       *maxValue = Temp[i];
        }
 
        /* If current element is smaller than min */
-       if(Temp[i] < min)
+       if(currentVal_a[i] < *minValue)
        {
-        min = Temp[i];
+        *minValue = Temp[i];
         }
      }
-   printf("rx temp data Min:%dMax:%d",min,max);
+   printf("rx temp data Min:%dMax:%d",*minValue,*maxValue);
 }
 void  computeAverage(int currentValue[], int NumofValues);
 {
