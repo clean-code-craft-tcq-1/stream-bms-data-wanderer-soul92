@@ -48,8 +48,8 @@ void receiveConsoleData_v()
 	/*Decoding charge rate data*/          
 	//rxDataDecoding(rxBuffer_a , chargeratestr_a ,chargerateBuff_i,strtIdx);
 	/*Decoding soc data*/    
-	strtIdx = 7;      
-	rxDataDecoding(rxBuffer_a , socstr_a ,socBuff_i,strtIdx);     
+	//strtIdx = 7;      
+	//rxDataDecoding(rxBuffer_a , socstr_a ,socBuff_i,strtIdx);     
 
 
 
