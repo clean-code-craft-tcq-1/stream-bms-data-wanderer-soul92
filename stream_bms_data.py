@@ -62,3 +62,7 @@ def print_to_consol(sensor_output, allowed_format):
     else :
         return "Sensor readings are Empty"
 
+if __name__ == '__main__':
+    min_max_range = get_min_max_range(BMS_allowed_range)
+    fields = get_bms_fields(BMS_allowed_range)
+    plugin_sensor_stream(min_max_range, stream_limit, fields)
