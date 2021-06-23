@@ -104,7 +104,7 @@ printf("tem add2 data is %u\n", tempBuff);
     findingsubstring_p(destBuff_a, occrnceRet_p, strtIdx, len);
     tempBuff[index] = atoi(destBuff_a);
     //printf("rx destBuff_a data is %s\n", destBuff_a);
-    //printf("rx temp2 data is %d\n", tempBuff[index]);
+    printf("rx index add  data is %u\n", &tempBuff[index]);
     index = index + 1;
     //printf("rx temp2 data is %d\n", tempBuff[index]); 
  
