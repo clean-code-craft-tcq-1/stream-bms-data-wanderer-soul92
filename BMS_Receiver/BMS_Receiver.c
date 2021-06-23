@@ -32,57 +32,51 @@ void receiveConsoleData_v()
     int tempBuff_i[25] = {0};
     int socBuff_i[25] = {0};
     int chargerateBuff_i[25] = {0};
-  int start =15;
-  int len =2;
- 
-  int index =0;
-  int index1 =0;
-  int index2 =0;
-  int max, min;
-  float avg;
+    int start =15;
+    int len =2;
+    int index =0;
+    int index1 =0;
+    int index2 =0;
+    int max, min;
+    float avg;
   
-  for (int i=0;i<74;i++)
-  {
- /*Reading recived data from console*/
-  gets (rxBuffer_a);
-    
-  //printf("rx data is %s\n", rxBuffer);
+    /* Loop until EOL */
+    for (int i=0;i<74;i++)
+    { 
+        /*Reading recived data from console*/
+        gets (rxBuffer_a);
+        //printf("rx data is %s\n", rxBuffer);
   
-  /*Decoding Temperature data*/      
-  occrnceRet_p = strstr(rxBuffer_a, "\"temperature\": ");
-  if (occrnceRet_p != NULL)
-  {
-   findingsubstring_p(destBuff_a, occrnceRet_p, start, len);
-     tempBuff_i[index] = atoi(destBuff_a);
-     //printf("rx temp2 data is %d\n", Temp[index]);
-     index = index + 1;
-  }
+         /*Decoding Temperature data*/      
+        occrnceRet_p = strstr(rxBuffer_a, "\"temperature\": ");
+        if (occrnceRet_p != NULL)
+        {
+            findingsubstring_p(destBuff_a, occrnceRet_p, start, len);
+            tempBuff_i[index] = atoi(destBuff_a);
+            //printf("rx temp2 data is %d\n", Temp[index]);
+            index = index + 1;
+         }
     
-  /*Decoding soc data*/      
-  occrnceRet_p = strstr(rxBuffer_a, "\"soc\": ");
-  if (occrnceRet_p != NULL)
-  {
-   start =7;
-
-   findingsubstring_p(destBuff_a, occrnceRet_p, start, len);
-    socBuff_i[index1] = atoi(destBuff_a);
-
-	  
-     index1 = index1 + 1;
-  }  
+         /*Decoding soc data*/      
+        occrnceRet_p = strstr(rxBuffer_a, "\"soc\": ");
+        if (occrnceRet_p != NULL)
+        {
+            start =7;
+            findingsubstring_p(destBuff_a, occrnceRet_p, start, len);
+            socBuff_i[index1] = atoi(destBuff_a);
+            index1 = index1 + 1;
+         }  
     
-  /*Decoding charge rate data*/      
-  occrnceRet_p = strstr(rxBuffer_a, "\"charge_rate\": ");
-  if (occrnceRet_p != NULL)
-  {
-   start =15;
-   findingsubstring_p(destBuff_a, occrnceRet_p, start, len);
-   chargerateBuff_i[index2]= atoi(destBuff_a);
-   index2 = index2 + 1;
-  } 
-    
- 
-  }
+         /*Decoding charge rate data*/      
+         occrnceRet_p = strstr(rxBuffer_a, "\"charge_rate\": ");
+         if (occrnceRet_p != NULL)
+         {
+             start =15;
+             findingsubstring_p(destBuff_a, occrnceRet_p, start, len);
+             chargerateBuff_i[index2]= atoi(destBuff_a);
+             index2 = index2 + 1;
+         } 
+    }
   
    /*Finding min and max of temperature*/
     /* Assume first element as maximum and minimum */
