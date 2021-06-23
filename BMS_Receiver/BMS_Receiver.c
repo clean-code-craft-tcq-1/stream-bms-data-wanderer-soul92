@@ -39,10 +39,10 @@ void receiveConsoleData_v()
     { 
         /*Reading recived data from console*/
         gets (rxBuffer_a);
-        //printf("rx data is %s\n", rxBuffer_a);
+        printf("rx data is %s\n", rxBuffer_a);
 
         /*Decoding Temperature data*/ 
-	printf("tem add data is %u\n", tempBuff_i);    
+	//printf("tem add data is %u\n", tempBuff_i);    
         rxDataDecoding(rxBuffer_a , tempstr_a ,tempBuff_i,strtIdx);
 	 
 	/*Decoding charge rate data*/          
@@ -104,8 +104,8 @@ printf("tem add2 data is %u\n", tempBuff);
     findingsubstring_p(destBuff_a, occrnceRet_p, strtIdx, len);
     tempBuff[index] = atoi(destBuff_a);
     //printf("rx destBuff_a data is %s\n", destBuff_a);
-    printf("rx index add  data is %u\n", &tempBuff[index]);
-    printf("rx index data is %d\n", index);
+    //printf("rx index add  data is %u\n", &tempBuff[index]);
+    //printf("rx index data is %d\n", index);
     index = index + 1;
     //printf("rx temp2 data is %d\n", tempBuff[index]); 
     // address is pointing address 	 
