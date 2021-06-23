@@ -46,7 +46,7 @@ void receiveConsoleData_v()
     { 
         /*Reading recived data from console*/
         gets (rxBuffer_a);
-        printf("rx data is %s\n", rxBuffer);
+        printf("rx data is %s\n", rxBuffer_a);
   
          /*Decoding Temperature data*/      
         occrnceRet_p = strstr(rxBuffer_a, test);
@@ -79,11 +79,12 @@ void receiveConsoleData_v()
          } 
     }
   
-   /*Finding min and max of temperature*/
+ 
     /* Assume first element as maximum and minimum */
    maxValue_i = tempBuff_i[0];
    minValue_i = tempBuff_i[0];
    start =15;
+   /*Finding min, max and avg of temperature*/	
    computeMinMax_v(tempBuff_i, &maxValue_i ,&minValue_i);
    avgValue_f = computeAverage_f(tempBuff_i ,start);
    printf("Temperature Data:- MinValue:%d MaxValue:%d AvgValue:%5.2f \n",minValue_i,maxValue_i,avgValue_f);
