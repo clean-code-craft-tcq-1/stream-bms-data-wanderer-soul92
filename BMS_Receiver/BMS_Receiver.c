@@ -38,7 +38,7 @@ void receiveConsoleData_v()
   int index =0;
   int index1 =0;
   int index2 =0;
-  int max, min;
+  int max, min,avg;
   
   for (i=0;i<74;i++)
   {
@@ -92,7 +92,9 @@ void receiveConsoleData_v()
    max = Temp[0];
      min = Temp[0];
     computeMinMax_v(Temp, &max ,&min);
-    printf("rx temp data Min:%dMax:%d",min,max);
+    printf("rx temp data Min:%dMax:%d\n",min,max);
+    avg = computeAverage_i(Temp ,start);
+    printf("rx temp data avg:%d\n"avg);
 }
 
 /*---------------------------------------------------------------------------*/
@@ -142,13 +144,13 @@ void  computeMinMax_v (int currentVal_a[], int *maxValue, int *minValue)
     for(idx=1; idx<15; idx++) /*checking complete array*/
     {
         /* If current element in array is greater than max */
-        if(currentVal_a[i] > *maxValue)
+        if(currentVal_a[idx] > *maxValue)
         {
            *maxValue = currentVal_a[i];
         }
 
         /* If current element in array is smaller than min */
-        if(currentVal_a[i] < *minValue)
+        if(currentVal_a[idx] < *minValue)
         {
             *minValue = currentVal_a[i];
         }
@@ -161,13 +163,31 @@ void  computeMinMax_v (int currentVal_a[], int *maxValue, int *minValue)
 /*!    \brief       compute Min and Max value in recived buffer
  * 
  *     \param       rxArray and  num of values
- *     \returns     None
+ *     \returns     avg
  *
 *//*------------------------------------------------------------------------*/
 
-void  computeAverage_v(int currentValue[], int NumofValues)
+int computeAverage_i(int currentVal_a[], int valsCnt )
 {
-
+ int  arrAvg_i = 0;
+ int arrSum_i = 0;
+ int i;
+  
+ if(valsCnt != 0)
+ {
+   for(i=0; i<valsCnt; i++)
+   {
+     arrSum_i += currentVal_a[i];
+   }
+ }
+ else
+ {
+   return arrAvg_i;
+ }		
+	
+  arrAvg_i = arrSum_i/valsCnt;
+  
+  return arrAvg_i;
 
 }
 
