@@ -64,9 +64,9 @@ void receiveConsoleData_v()
         // }  
     }
   
- printf("rx temp3 data is %d\n", tempBuff[0]);
- printf("rx temp3 data is %d\n", tempBuff[1]);
- printf("rx temp3 data is %d\n", tempBuff[2]);
+ printf("rx temp3 data is %d\n", tempBuff_i[0]);
+ printf("rx temp3 data is %d\n", tempBuff_i[1]);
+ printf("rx temp3 data is %d\n", tempBuff_i[2]);
     /* Assume first element as maximum and minimum */
    maxValue_i = tempBuff_i[0];
    minValue_i = tempBuff_i[0];
