@@ -13,7 +13,7 @@
 /*------ Project includes -------*/
 #include "BMS_Receiver.h"
 
-void rxDataDecoding(char rxBuffer[] , char tempstr[] ,char tempBuff[] ,int strtIdx);
+void rxDataDecoding(char rxBuffer[] , char tempstr[] ,int tempBuff[] ,int strtIdx);
 /*---------------------------------------------------------------------------*/
 /*     FUNCTION:    receiveConsoleData_v
  */
@@ -75,10 +75,10 @@ void receiveConsoleData_v()
     /* Assume first element as maximum and minimum */
    maxValue_i = tempBuff_i[0];
    minValue_i = tempBuff_i[0];
-   start =15;
+   strtIndex =15;
    /*Finding min, max and avg of temperature*/	
    computeMinMax_v(tempBuff_i, &maxValue_i ,&minValue_i);
-   avgValue_f = computeAverage_f(tempBuff_i ,start);
+   avgValue_f = computeAverage_f(tempBuff_i ,strtIndex);
    printf("Temperature Data:- MinValue:%d MaxValue:%d AvgValue:%5.2f \n",minValue_i,maxValue_i,avgValue_f);
 	
    maxValue_i = socBuff_i[0];
@@ -94,7 +94,7 @@ void receiveConsoleData_v()
    printf("chargerate Data:- MinValue:%d MaxValue:%d AvgValue:%5.2f \n",minValue_i,maxValue_i,avgValue_f);
 }
 
-void rxDataDecoding(char rxBuffer[] , char bmsparstr[] ,char bmsparBuff[], int strtIdx)
+void rxDataDecoding(char rxBuffer[] , char bmsparstr[] ,int bmsparBuff[], int strtIdx)
 {
  int index =0;
  char *occrnceRet_p;
