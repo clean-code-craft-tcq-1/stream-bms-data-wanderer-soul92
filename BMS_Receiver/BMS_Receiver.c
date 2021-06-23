@@ -41,7 +41,8 @@ void receiveConsoleData_v()
         gets (rxBuffer_a);
         //printf("rx data is %s\n", rxBuffer_a);
 
-        /*Decoding Temperature data*/      
+        /*Decoding Temperature data*/ 
+	printf("tem add data is %u\n", tempBuff_i);    
         rxDataDecoding(rxBuffer_a , tempstr_a ,tempBuff_i,strtIdx);
 	 
 	/*Decoding charge rate data*/          
@@ -97,13 +98,13 @@ void rxDataDecoding(char *rxBuffer, char *tempstr ,int *tempBuff ,int strtIdx)
  //  printf("rx data is %s\n", rxBuffer);
   //printf("rx tempstr data is %s\n", tempstr);	
   occrnceRet_p = strstr(rxBuffer, tempstr);
-	
+printf("tem add2 data is %u\n", tempBuff);  	
  if (occrnceRet_p != NULL)
   {
     findingsubstring_p(destBuff_a, occrnceRet_p, strtIdx, len);
     tempBuff[index] = atoi(destBuff_a);
     //printf("rx destBuff_a data is %s\n", destBuff_a);
-    printf("rx temp2 data is %d\n", tempBuff[index]);
+    //printf("rx temp2 data is %d\n", tempBuff[index]);
     index = index + 1;
     //printf("rx temp2 data is %d\n", tempBuff[index]); 
  
