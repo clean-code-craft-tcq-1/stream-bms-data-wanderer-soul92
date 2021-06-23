@@ -51,7 +51,7 @@ void receiveConsoleData_v()
         printf("rx data is %s\n", rxBuffer_a);
   
          /*Decoding Temperature data*/      
-        occrnceRet_p = strstr(rxBuffer_a, test);
+        occrnceRet_p = strstr(rxBuffer_a, tempstr_a);
         if (occrnceRet_p != NULL)
         {
             findingsubstring_p(destBuff_a, occrnceRet_p, start, len);
