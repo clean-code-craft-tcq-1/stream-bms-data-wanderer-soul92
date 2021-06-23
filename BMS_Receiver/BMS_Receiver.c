@@ -85,7 +85,7 @@ void receiveConsoleData_v()
    start =15;
    computeMinMax_v(tempBuff_i, &maxValue_i ,&minValue_i);
    avgValue_f = computeAverage_f(tempBuff_i ,start);
-   printf("Temperature Data:- MinValue:%d MaxValue:%d AvgValue:%5.2f \n",minValue_i,maxValue_i,avg);
+   printf("Temperature Data:- MinValue:%d MaxValue:%d AvgValue:%5.2f \n",minValue_i,maxValue_i,avgValue_f);
 	
    maxValue_i = socBuff_i[0];
    minValue_i = socBuff_i[0];
