@@ -39,8 +39,10 @@ void receiveConsoleData_v()
     int index2 =0;
     int maxValue_i, minValue_i;
     float avgValue_f;
-    char test[]	={"\"temperature\": "};
-  
+    char tempstr_a[]	={"\"temperature\": "};
+    char socstr_a[]	={"\"soc\": "};
+    char chargeratestr_a[] ={"\"charge_rate\": "};
+	
     /* Loop until EOL */
     for (int i=0;i<74;i++)
     { 
@@ -59,7 +61,7 @@ void receiveConsoleData_v()
          }
     
          /*Decoding soc data*/      
-        occrnceRet_p = strstr(rxBuffer_a, "\"soc\": ");
+        occrnceRet_p = strstr(rxBuffer_a, socstr_a);
         if (occrnceRet_p != NULL)
         {
             start =7;
@@ -69,7 +71,7 @@ void receiveConsoleData_v()
          }  
     
          /*Decoding charge rate data*/      
-         occrnceRet_p = strstr(rxBuffer_a, "\"charge_rate\": ");
+         occrnceRet_p = strstr(rxBuffer_a, chargeratestr_a);
          if (occrnceRet_p != NULL)
          {
              start =15;
