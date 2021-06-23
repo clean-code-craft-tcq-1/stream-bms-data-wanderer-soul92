@@ -43,7 +43,7 @@ void receiveConsoleData_v()
 
         /*Decoding Temperature data*/      
         rxDataDecoding(rxBuffer_a , tempstr_a ,tempBuff_i,strtIdx);
-	//printf("rx temp3 data is %d\n", tempBuff_i[3]);
+	 
 	/*Decoding charge rate data*/          
 	//rxDataDecoding(rxBuffer_a , chargeratestr_a ,chargerateBuff_i,strtIdx);
 	/*Decoding soc data*/    
@@ -64,7 +64,9 @@ void receiveConsoleData_v()
         // }  
     }
   
- 
+ printf("rx temp3 data is %d\n", tempBuff[0]);
+ printf("rx temp3 data is %d\n", tempBuff[1]);
+ printf("rx temp3 data is %d\n", tempBuff[2]);
     /* Assume first element as maximum and minimum */
    maxValue_i = tempBuff_i[0];
    minValue_i = tempBuff_i[0];
@@ -100,7 +102,7 @@ void rxDataDecoding(char *rxBuffer, char *tempstr ,int *tempBuff ,int strtIdx)
   {
     findingsubstring_p(destBuff_a, occrnceRet_p, strtIdx, len);
     tempBuff[index] = atoi(destBuff_a);
-    printf("rx destBuff_a data is %s\n", destBuff_a);
+    //printf("rx destBuff_a data is %s\n", destBuff_a);
     printf("rx temp2 data is %d\n", tempBuff[index]);
     index = index + 1;
     //printf("rx temp2 data is %d\n", tempBuff[index]); 
