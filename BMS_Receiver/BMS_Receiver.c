@@ -69,7 +69,10 @@ void receiveConsoleData_v()
    //printf("rx temp data is %s\n", ret);
    findingsubstring_p(destination, ret, start, len);
    //printf("rx soc data is %s\n", destination);
-    soc[index1++] = atoi(destination);
+      soc[index1] = atoi(destination);
+     printf("rx soc data is %d\n", soc[index1]);
+   
+     index1 = index1 + 1;
   }  
     
   /*Decoding charge rate data*/      
@@ -81,7 +84,9 @@ void receiveConsoleData_v()
    //printf("rx temp data is %s\n", ret);
    findingsubstring_p(destination, ret, start, len);
    //printf("rx charge rate data is %s\n", destination);
-    chargerate[index2++]= atoi(destination);
+    chargerate[index2]= atoi(destination);
+     printf("rx chargerate data is %d\n", chargerate[index2]);
+     index2 = index2 + 1;
   } 
     
  
@@ -90,8 +95,8 @@ void receiveConsoleData_v()
    /*Finding min and max of temperature*/
     /* Assume first element as maximum and minimum */
    max = Temp[0];
-     min = Temp[0];
-	   start =15;
+   min = Temp[0];
+   start =15;
     computeMinMax_v(Temp, &max ,&min);
     printf("rx temp data Min:%dMax:%d\n",min,max);
     avg = computeAverage_i(Temp ,start);
@@ -170,26 +175,19 @@ void  computeMinMax_v (int currentVal_a[], int *maxValue, int *minValue)
 
 int computeAverage_i(int currentVal_a[], int valsCnt )
 {
- int  arrAvg_i = 0;
- int arrSum_i = 0;
- int i;
-  
- if(valsCnt != 0)
- {
-   for(i=0; i<valsCnt; i++)
-   {
-     arrSum_i += currentVal_a[i];
-   }
- }
- else
- {
-   return arrAvg_i;
- }		
+    int arrAvg_i = 0;
+    int arrSum_i = 0;
+    int i;
+    
+    for(i=0; i<valsCnt; i++)
+    {
+     arrSum_i += currentVal_a[i];  /*Compute sum*/
+    }
 	
-  arrAvg_i = arrSum_i/valsCnt;
+     /*Compute avg*/	
+     arrAvg_i = arrSum_i/valsCnt;
   
-  return arrAvg_i;
-
+     return arrAvg_i;
 }
 
 int  main()
