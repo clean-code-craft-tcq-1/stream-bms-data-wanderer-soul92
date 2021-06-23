@@ -93,8 +93,8 @@ void receiveConsoleData_v()
      min = Temp[0];
     computeMinMax_v(Temp, &max ,&min);
     printf("rx temp data Min:%dMax:%d\n",min,max);
-    avg = computeAverage_i(Temp ,start);
-    printf("rx temp data avg:%d\n"avg);
+   // avg = computeAverage_i(Temp ,start);
+  //  printf("rx temp data avg:%d\n"avg);
 }
 
 /*---------------------------------------------------------------------------*/
