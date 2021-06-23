@@ -13,7 +13,7 @@
 /*------ Project includes -------*/
 #include "BMS_Receiver.h"
 
-void rxDataDecoding(char rxBuffer[] , char tempstr[] ,int tempBuff[] ,int strtIdx);
+void rxDataDecoding(char *rxBuffer , char *tempstr ,int *tempBuff ,int strtIdx);
 /*---------------------------------------------------------------------------*/
 /*     FUNCTION:    receiveConsoleData_v
  */
@@ -50,7 +50,7 @@ void receiveConsoleData_v()
 	/*Decoding charge rate data*/         
 	//rxDataDecoding(rxBuffer_a , chargeratestr_a ,chargerateBuff_i,strtIdx);
 	/*Decoding soc data*/ 
-	strtIdx = 7;      
+	//strtIdx = 7;      
 	//rxDataDecoding(rxBuffer_a , socstr_a ,socBuff_i,strtIdx);     
        
 		    
@@ -91,7 +91,7 @@ void receiveConsoleData_v()
    printf("chargerate Data:- MinValue:%d MaxValue:%d AvgValue:%5.2f \n",minValue_i,maxValue_i,avgValue_f);
 }
 
-void rxDataDecoding(char rxBuffer[] , char bmsparstr[] ,int bmsparBuff[], int strtIdx)
+void rxDataDecoding(char *rxBuffer , char *bmsparstr ,int *bmsparBuff, int strtIdx)
 {
  int index =0;
  char *occrnceRet_p;
@@ -99,13 +99,14 @@ void rxDataDecoding(char rxBuffer[] , char bmsparstr[] ,int bmsparBuff[], int st
  int len =2;
 	
   occrnceRet_p = strstr(rxBuffer, bmsparstr);
+//printf("rx temp2 data is %d\n", bmsparBuff[index]);	
  if (occrnceRet_p != NULL)
   {
     findingsubstring_p(destBuff_a, occrnceRet_p, strtIdx, len);
     bmsparBuff[index] = atoi(destBuff_a);
-    printf("destBuff_a is %s",destBuff_a[index]);
+    //printf("destBuff_a is %s",destBuff_a[index]);
      //printf("occrnceRet_p is %s",*occrnceRet_p);
-     printf("strtIdx is %d",strtIdx);
+     //printf("strtIdx is %d",strtIdx);
     printf("rx temp2 data is %d\n", bmsparBuff[index]);
     index = index + 1;
   }
