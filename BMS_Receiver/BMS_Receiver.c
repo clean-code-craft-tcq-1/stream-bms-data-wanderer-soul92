@@ -26,16 +26,11 @@ void rxDataDecoding(char rxBuffer[] , char tempstr[] ,int tempBuff[] ,int strtId
 
 void receiveConsoleData_v()
 {
-    
     char rxBuffer_a[1000] = {0};
     int tempBuff_i[25] = {0};
     int socBuff_i[25] = {0};
     int chargerateBuff_i[25] = {0};
     int strtIndex =15;
-   
-   
-    int index1 =0;
-    int index2 =0;
     int maxValue_i, minValue_i;
     float avgValue_f;
     char tempstr_a[]	={"\"temperature\": "};
@@ -84,13 +79,13 @@ void receiveConsoleData_v()
    maxValue_i = socBuff_i[0];
    minValue_i = socBuff_i[0];
    computeMinMax_v(socBuff_i, &maxValue_i ,&minValue_i);
-   avgValue_f = computeAverage_f(socBuff_i ,start);
+   avgValue_f = computeAverage_f(socBuff_i ,strtIndex);
    printf("SOC Data:- MinValue:%d MaxValue:%d AvgValue:%5.2f\n",minValue_i,maxValue_i,avgValue_f);
 		
    maxValue_i = chargerateBuff_i[0];
    minValue_i = chargerateBuff_i[0];
    computeMinMax_v(chargerateBuff_i, &maxValue_i ,&minValue_i);
-   avgValue_f = computeAverage_f(chargerateBuff_i ,start);
+   avgValue_f = computeAverage_f(chargerateBuff_i ,strtIndex);
    printf("chargerate Data:- MinValue:%d MaxValue:%d AvgValue:%5.2f \n",minValue_i,maxValue_i,avgValue_f);
 }
 
