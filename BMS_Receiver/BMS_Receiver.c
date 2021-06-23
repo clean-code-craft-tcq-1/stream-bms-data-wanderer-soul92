@@ -89,7 +89,7 @@ void receiveConsoleData_v()
    avgValue_f = computeAverage_f(chargerateBuff_i ,strtIdx);
    printf("chargerate Data:- MinValue:%d MaxValue:%d AvgValue:%5.2f \n",minValue_i,maxValue_i,avgValue_f);
 }
-void rxDataDecoding(char *rxBuffer, char *tempstr ,int *tempBuff ,int strtIdx)
+void rxDataDecoding(char *rxBuffer, char *tempstr ,int tempBuff[] ,int strtIdx)
 {
  int index =0;
  char *occrnceRet_p;
@@ -107,6 +107,7 @@ printf("tem add2 data is %u\n", tempBuff);
     printf("rx index add  data is %u\n", &tempBuff[index]);
     index = index + 1;
     //printf("rx temp2 data is %d\n", tempBuff[index]); 
+    // address is pointing address 	 
  
 	 
   }
