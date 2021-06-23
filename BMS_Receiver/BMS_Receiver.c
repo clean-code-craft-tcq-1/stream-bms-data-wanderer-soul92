@@ -146,13 +146,13 @@ void  computeMinMax_v (int currentVal_a[], int *maxValue, int *minValue)
         /* If current element in array is greater than max */
         if(currentVal_a[idx] > *maxValue)
         {
-           *maxValue = currentVal_a[i];
+           *maxValue = currentVal_a[idx];
         }
 
         /* If current element in array is smaller than min */
         if(currentVal_a[idx] < *minValue)
         {
-            *minValue = currentVal_a[i];
+            *minValue = currentVal_a[idx];
         }
      }
 }
