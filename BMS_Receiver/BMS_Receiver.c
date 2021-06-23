@@ -89,22 +89,8 @@ void receiveConsoleData_v()
   }
    max = Temp[0];
      min = Temp[0];
-  
-   for(i=1; i<15; i++)
-    {
-        /* If current element is greater than max */
-      if(Temp[i] > max)
-      {
-       max = Temp[i];
-       }
+    computeMinMax(Temp, &max ,&min);
 
-       /* If current element is smaller than min */
-       if(Temp[i] < min)
-       {
-        min = Temp[i];
-        }
-     }
-   printf("rx temp data Min:%dMax:%d",min,max);
 }
 
 // Function to implement substring function in C
@@ -126,6 +112,30 @@ char* findingsubstring_p (char *dest, const char *src, int stIndx, int len);
  
     // return the destination string
     return dest;
+}
+
+void  computeMinMax(int currentValue[], int *maxValue, int *minValue)
+{
+   for(i=1; i<15; i++)
+    {
+        /* If current element is greater than max */
+      if(Temp[i] > max)
+      {
+       max = Temp[i];
+       }
+
+       /* If current element is smaller than min */
+       if(Temp[i] < min)
+       {
+        min = Temp[i];
+        }
+     }
+   printf("rx temp data Min:%dMax:%d",min,max);
+}
+void  computeAverage(int currentValue[], int NumofValues);
+{
+
+
 }
 int  main()
 {
