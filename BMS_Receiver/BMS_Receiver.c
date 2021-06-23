@@ -13,7 +13,7 @@
 /*------ Project includes -------*/
 #include "BMS_Receiver.h"
 
-void rxDataDecoding(char rxBuffer[] , char tempstr[] ,char tempBuff ,int strtIdx);
+void rxDataDecoding(char rxBuffer[] , char tempstr[] ,char tempBuff[] ,int strtIdx);
 /*---------------------------------------------------------------------------*/
 /*     FUNCTION:    receiveConsoleData_v
  */
@@ -94,14 +94,14 @@ void receiveConsoleData_v()
    printf("chargerate Data:- MinValue:%d MaxValue:%d AvgValue:%5.2f \n",minValue_i,maxValue_i,avgValue_f);
 }
 
-void rxDataDecoding(char rxBuffer[] , char bmsparstr[] ,char bmsparBuff,int strtIdx)
+void rxDataDecoding(char rxBuffer[] , char bmsparstr[] ,char bmsparBuff[], int strtIdx)
 {
  int index =0;
  char *occrnceRet_p;
  char destBuff_a[25];	
  int len =2;
 	
-  occrnceRet_p = strstr(rxBuffer_a, bmsparstr);
+  occrnceRet_p = strstr(rxBuffer, bmsparstr);
  if (occrnceRet_p != NULL)
   {
     findingsubstring_p(destBuff_a, occrnceRet_p, strtIdx, len);
