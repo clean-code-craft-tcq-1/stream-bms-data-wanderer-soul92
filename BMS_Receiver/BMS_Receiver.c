@@ -73,7 +73,7 @@ void receiveConsoleData_v()
     
   /*Decoding charge rate data*/      
   occrnceRet_p = strstr(rxBuffer_a, "\"charge_rate\": ");
-  if (ret != NULL)
+  if (occrnceRet_p != NULL)
   {
    start =15;
    findingsubstring_p(destBuff_a, occrnceRet_p, start, len);
