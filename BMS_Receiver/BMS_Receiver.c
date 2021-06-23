@@ -48,8 +48,8 @@ void receiveConsoleData_v()
 	/*Decoding charge rate data*/          
 	//rxDataDecoding(rxBuffer_a , chargeratestr_a ,chargerateBuff_i,strtIdx);
 	/*Decoding soc data*/    
-	//strtIdx = 7;      
-	///rxDataDecoding(rxBuffer_a , socstr_a ,socBuff_i,strtIdx);     
+	strtIdx = 7;      
+	rxDataDecoding(rxBuffer_a , socstr_a ,socBuff_i,strtIdx);     
 
 
 
@@ -98,7 +98,7 @@ void rxDataDecoding(char *rxBuffer, char *tempstr ,int tempBuff[] ,int strtIdx)
  //  printf("rx data is %s\n", rxBuffer);
   //printf("rx tempstr data is %s\n", tempstr);	
   occrnceRet_p = strstr(rxBuffer, tempstr);
-printf("tem add2 data is %u\n", tempBuff);  	
+//printf("tem add2 data is %u\n", tempBuff);  	
  if (occrnceRet_p != NULL)
   {
     findingsubstring_p(destBuff_a, occrnceRet_p, strtIdx, len);
