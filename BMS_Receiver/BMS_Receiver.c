@@ -39,6 +39,7 @@ void receiveConsoleData_v()
     int index2 =0;
     int maxValue_i, minValue_i;
     float avgValue_f;
+    char test[]	={"\"temperature\": "};
   
     /* Loop until EOL */
     for (int i=0;i<74;i++)
@@ -48,7 +49,7 @@ void receiveConsoleData_v()
         //printf("rx data is %s\n", rxBuffer);
   
          /*Decoding Temperature data*/      
-        occrnceRet_p = strstr(rxBuffer_a, "\"temperature\": ");
+        occrnceRet_p = strstr(rxBuffer_a, test);
         if (occrnceRet_p != NULL)
         {
             findingsubstring_p(destBuff_a, occrnceRet_p, start, len);
