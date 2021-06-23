@@ -38,14 +38,15 @@ void receiveConsoleData_v()
   int index =0;
   int index1 =0;
   int index2 =0;
-  int max, min,avg;
+  int max, min;
+  float avg;
   
   for (i=0;i<74;i++)
   {
  /*Reading recived data from console*/
   gets (rxBuffer);
     
-  printf("rx data is %s\n", rxBuffer);
+  //printf("rx data is %s\n", rxBuffer);
   
   /*Decoding Temperature data*/      
   ret = strstr(rxBuffer, "\"temperature\": ");
@@ -54,7 +55,7 @@ void receiveConsoleData_v()
    findingsubstring_p(destination, ret, start, len);
    //printf("rx temp1 data is %s\n", destination);
      Temp[index] = atoi(destination);
-     printf("rx temp2 data is %d\n", Temp[index]);
+     //printf("rx temp2 data is %d\n", Temp[index]);
     
      //printf("rx index data is %d\n", index);
      index = index + 1;
@@ -85,7 +86,7 @@ void receiveConsoleData_v()
    findingsubstring_p(destination, ret, start, len);
    //printf("rx charge rate data is %s\n", destination);
     chargerate[index2]= atoi(destination);
-     printf("rx chargerate data is %d\n", chargerate[index2]);
+    // printf("rx chargerate data is %d\n", chargerate[index2]);
      index2 = index2 + 1;
   } 
     
@@ -99,24 +100,24 @@ void receiveConsoleData_v()
    start =15;
     computeMinMax_v(Temp, &max ,&min);
     printf("rx temp data Min:%dMax:%d\n",min,max);
-    avg = computeAverage_i(Temp ,start);
-    printf("rx temp data avg:%d\n",avg);
+    avg = computeAverage_f(Temp ,start);
+    printf("rx temp data avg:%f\n",avg);
 	
    max = soc[0];
    min = soc[0];
    start =15;
     computeMinMax_v(soc, &max ,&min);
     printf("rx soc data Min:%dMax:%d\n",min,max);
-    avg = computeAverage_i(soc ,start);
-    printf("rx soc data avg:%d\n",avg);
+    avg = computeAverage_f(soc ,start);
+    printf("rx soc data avg:%f\n",avg);
 	
    max = chargerate[0];
    min = chargerate[0];
    start =15;
     computeMinMax_v(chargerate, &max ,&min);
     printf("rx chargerate data Min:%dMax:%d\n",min,max);
-    avg = computeAverage_i(chargerate ,start);
-    printf("rx chargerate data avg:%d\n",avg);
+    avg = computeAverage_f(chargerate ,start);
+    printf("rx chargerate data avg:%f\n",avg);
 }
 
 /*---------------------------------------------------------------------------*/
@@ -189,9 +190,9 @@ void  computeMinMax_v (int currentVal_a[], int *maxValue, int *minValue)
  *
 *//*------------------------------------------------------------------------*/
 
-int computeAverage_i(int currentVal_a[], int valsCnt )
+float computeAverage_f(int currentVal_a[], int valsCnt )
 {
-    int arrAvg_i = 0;
+    float arrAvg_f = 0;
     int arrSum_i = 0;
     int i;
     
@@ -201,9 +202,9 @@ int computeAverage_i(int currentVal_a[], int valsCnt )
     }
 	
      /*Compute avg*/	
-     arrAvg_i = arrSum_i/valsCnt;
+     arrAvg_f = arrSum_i/valsCnt;
   
-     return arrAvg_i;
+     return arrAvg_f;
 }
 
 int  main()
