@@ -37,8 +37,8 @@ void receiveConsoleData_v()
     int index =0;
     int index1 =0;
     int index2 =0;
-    int max, min;
-    float avg;
+    int maxValue_i, minValue_i;
+    float avgValue_f;
   
     /* Loop until EOL */
     for (int i=0;i<74;i++)
@@ -80,33 +80,24 @@ void receiveConsoleData_v()
   
    /*Finding min and max of temperature*/
     /* Assume first element as maximum and minimum */
-   max = tempBuff_i[0];
-   min = tempBuff_i[0];
+   maxValue_i = tempBuff_i[0];
+   minValue_i = tempBuff_i[0];
    start =15;
-    computeMinMax_v(tempBuff_i, &max ,&min);
-    //printf("rx temp data Min:%dMax:%d\n",min,max);
-    avg = computeAverage_f(tempBuff_i ,start);
-    //printf("rx temp data avg:%f\n",avg);
-    printf("Temperature Data:- MinValue:%d MaxValue:%d AvgValue:%5.2f \n",min,max,avg);
+   computeMinMax_v(tempBuff_i, &maxValue_i ,&minValue_i);
+   avgValue_f = computeAverage_f(tempBuff_i ,start);
+   printf("Temperature Data:- MinValue:%d MaxValue:%d AvgValue:%5.2f \n",minValue_i,maxValue_i,avg);
 	
-   max = socBuff_i[0];
-   min = socBuff_i[0];
-   start =15;
-    computeMinMax_v(socBuff_i, &max ,&min);
-    //printf(" Min:%dMax:%d\n",min,max);
-    avg = computeAverage_f(socBuff_i ,start);
-    printf("SOC Data:- MinValue:%d MaxValue:%d AvgValue:%5.2f\n",min,max,avg);
-	
-    //printf("rx soc data avg:%f\n",avg);
-	
-   max = chargerateBuff_i[0];
-   min = chargerateBuff_i[0];
-   start =15;
-    computeMinMax_v(chargerateBuff_i, &max ,&min);
-    //printf("rx chargerate data Min:%dMax:%d\n",min,max);
-    avg = computeAverage_f(chargerateBuff_i ,start);
-    //printf("rx chargerate data avg:%f\n",avg);
-    printf("chargerate Data:- MinValue:%d MaxValue:%d AvgValue:%5.2f \n",min,max,avg);
+   maxValue_i = socBuff_i[0];
+   minValue_i = socBuff_i[0];
+   computeMinMax_v(socBuff_i, &maxValue_i ,&minValue_i);
+   avgValue_f = computeAverage_f(socBuff_i ,start);
+   printf("SOC Data:- MinValue:%d MaxValue:%d AvgValue:%5.2f\n",minValue_i,maxValue_i,avgValue_f);
+		
+   maxValue_i = chargerateBuff_i[0];
+   minValue_i = chargerateBuff_i[0];
+   computeMinMax_v(chargerateBuff_i, &maxValue_i ,&minValue_i);
+   avgValue_f = computeAverage_f(chargerateBuff_i ,start);
+   printf("chargerate Data:- MinValue:%d MaxValue:%d AvgValue:%5.2f \n",minValue_i,maxValue_i,avgValue_f);
 }
 
 /*---------------------------------------------------------------------------*/
