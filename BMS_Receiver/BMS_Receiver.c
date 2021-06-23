@@ -30,7 +30,7 @@ void receiveConsoleData_v()
     int tempBuff_i[25] = {0};
     int socBuff_i[25] = {0};
     int chargerateBuff_i[25] = {0};
-    int start =15;
+    int startidx =15;
     int len =2;
     int index =0;
     int index1 =0;
@@ -47,13 +47,13 @@ void receiveConsoleData_v()
     { 
         /*Reading recived data from console*/
         gets (rxBuffer_a);
-      //  printf("rx data is %s\n", rxBuffer_a);
+       printf("rx data is %s\n", rxBuffer_a);
   
          /*Decoding Temperature data*/      
         occrnceRet_p = strstr(rxBuffer_a, tempstr_a);
         if (occrnceRet_p != NULL)
         {
-            findingsubstring_p(destBuff_a, occrnceRet_p, start, len);
+            findingsubstring_p(destBuff_a, occrnceRet_p, startidx, len);
             tempBuff_i[index] = atoi(destBuff_a);
             //printf("rx temp2 data is %d\n", Temp[index]);
             index = index + 1;
@@ -63,8 +63,8 @@ void receiveConsoleData_v()
         occrnceRet_p = strstr(rxBuffer_a, socstr_a);
         if (occrnceRet_p != NULL)
         {
-            start =7;
-            findingsubstring_p(destBuff_a, occrnceRet_p, start, len);
+            startidx =7;
+            findingsubstring_p(destBuff_a, occrnceRet_p, startidx, len);
             socBuff_i[index1] = atoi(destBuff_a);
             index1 = index1 + 1;
          }  
@@ -73,8 +73,8 @@ void receiveConsoleData_v()
          occrnceRet_p = strstr(rxBuffer_a, chargeratestr_a);
          if (occrnceRet_p != NULL)
          {
-             start =15;
-             findingsubstring_p(destBuff_a, occrnceRet_p, start, len);
+             startidx =15;
+             findingsubstring_p(destBuff_a, occrnceRet_p, startidx, len);
              chargerateBuff_i[index2]= atoi(destBuff_a);
              index2 = index2 + 1;
          } 
@@ -84,22 +84,21 @@ void receiveConsoleData_v()
     /* Assume first element as maximum and minimum */
    maxValue_i = tempBuff_i[0];
    minValue_i = tempBuff_i[0];
-   start =15;
    /*Finding min, max and avg of temperature*/	
    computeMinMax_v(tempBuff_i, &maxValue_i ,&minValue_i);
-   avgValue_f = computeAverage_f(tempBuff_i ,start);
+   avgValue_f = computeAverage_f(tempBuff_i ,startidx);
    printf("Temperature Data:- MinValue:%d MaxValue:%d AvgValue:%5.2f \n",minValue_i,maxValue_i,avgValue_f);
 	
    maxValue_i = socBuff_i[0];
    minValue_i = socBuff_i[0];
    computeMinMax_v(socBuff_i, &maxValue_i ,&minValue_i);
-   avgValue_f = computeAverage_f(socBuff_i ,start);
+   avgValue_f = computeAverage_f(socBuff_i ,startidx);
    printf("SOC Data:- MinValue:%d MaxValue:%d AvgValue:%5.2f\n",minValue_i,maxValue_i,avgValue_f);
 		
    maxValue_i = chargerateBuff_i[0];
    minValue_i = chargerateBuff_i[0];
    computeMinMax_v(chargerateBuff_i, &maxValue_i ,&minValue_i);
-   avgValue_f = computeAverage_f(chargerateBuff_i ,start);
+   avgValue_f = computeAverage_f(chargerateBuff_i ,startidx);
    printf("chargerate Data:- MinValue:%d MaxValue:%d AvgValue:%5.2f \n",minValue_i,maxValue_i,avgValue_f);
 }
 
