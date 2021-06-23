@@ -94,16 +94,16 @@ void rxDataDecoding(char *rxBuffer, char *tempstr ,int *tempBuff ,int strtIdx)
  int len =2;
  
   printf("rx tempstr data is %s\n", tempstr);	
-  occrnceRet_p = strstr(rxBuffer, bmsparstr);
+  occrnceRet_p = strstr(rxBuffer, tempstr);
 	
  if (occrnceRet_p != NULL)
   {
     findingsubstring_p(destBuff_a, occrnceRet_p, strtIdx, len);
-    bmsparBuff[index] = atoi(destBuff_a);
+    tempBuff[index] = atoi(destBuff_a);
      //printf("rx temp2 data is %d\n", Temp[index]);
     
     index = index + 1;
-    printf("rx temp2 data is %d\n", bmsparBuff[index]); 
+    printf("rx temp2 data is %d\n", tempBuff[index]); 
  
 	 
   }
