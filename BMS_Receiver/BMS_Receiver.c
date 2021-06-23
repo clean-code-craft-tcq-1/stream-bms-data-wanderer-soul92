@@ -25,69 +25,60 @@
 
 void receiveConsoleData_v()
 {
-  char rxBuffer[1000] = {0};
-  int i;
-  char *ret;
+    
+    char rxBuffer_a[1000] = {0};
+    char *occrnceRet_p;
+    char destBuff_a[25];
+    int tempBuff_i[25] = {0};
+    int socBuff_i[25] = {0};
+    int chargerateBuff_i[25] = {0};
   int start =15;
   int len =2;
-  char destination[25];
-  int Temp[30] = {0};
-  int soc[30] = {0};
-  int chargerate[30] = {0};
-  //char tempbuffer[30];
+ 
   int index =0;
   int index1 =0;
   int index2 =0;
   int max, min;
   float avg;
   
-  for (i=0;i<74;i++)
+  for (int i=0;i<74;i++)
   {
  /*Reading recived data from console*/
-  gets (rxBuffer);
+  gets (rxBuffer_a);
     
   //printf("rx data is %s\n", rxBuffer);
   
   /*Decoding Temperature data*/      
-  ret = strstr(rxBuffer, "\"temperature\": ");
-  if (ret != NULL)
+  occrnceRet_p = strstr(rxBuffer_a, "\"temperature\": ");
+  if (occrnceRet_p != NULL)
   {
-   findingsubstring_p(destination, ret, start, len);
-   //printf("rx temp1 data is %s\n", destination);
-     Temp[index] = atoi(destination);
+   findingsubstring_p(destBuff_a, occrnceRet_p, start, len);
+     tempBuff_i[index] = atoi(destBuff_a);
      //printf("rx temp2 data is %d\n", Temp[index]);
-    
-     //printf("rx index data is %d\n", index);
      index = index + 1;
   }
     
   /*Decoding soc data*/      
-  ret = strstr(rxBuffer, "\"soc\": ");
-  //index =0;
-  if (ret != NULL)
+  occrnceRet_p = strstr(rxBuffer_a, "\"soc\": ");
+  if (occrnceRet_p != NULL)
   {
    start =7;
-   //printf("rx temp data is %s\n", ret);
-   findingsubstring_p(destination, ret, start, len);
-   //printf("rx soc data is %s\n", destination);
-      soc[index1] = atoi(destination);
-    // printf("rx soc data is %d\n", soc[index1]);
-   
+
+   findingsubstring_p(destBuff_a, occrnceRet_p, start, len);
+    socBuff_i[index1] = atoi(destBuff_a);
+
+	  
      index1 = index1 + 1;
   }  
     
   /*Decoding charge rate data*/      
-  ret = strstr(rxBuffer, "\"charge_rate\": ");
-  //index =0;  
+  occrnceRet_p = strstr(rxBuffer_a, "\"charge_rate\": ");
   if (ret != NULL)
   {
    start =15;
-   //printf("rx temp data is %s\n", ret);
-   findingsubstring_p(destination, ret, start, len);
-   //printf("rx charge rate data is %s\n", destination);
-    chargerate[index2]= atoi(destination);
-    // printf("rx chargerate data is %d\n", chargerate[index2]);
-     index2 = index2 + 1;
+   findingsubstring_p(destBuff_a, occrnceRet_p, start, len);
+   chargerate[index2]= atoi(destBuff_a);
+   index2 = index2 + 1;
   } 
     
  
@@ -95,31 +86,31 @@ void receiveConsoleData_v()
   
    /*Finding min and max of temperature*/
     /* Assume first element as maximum and minimum */
-   max = Temp[0];
-   min = Temp[0];
+   max = tempBuff_i[0];
+   min = tempBuff_i[0];
    start =15;
-    computeMinMax_v(Temp, &max ,&min);
+    computeMinMax_v(tempBuff_i, &max ,&min);
     //printf("rx temp data Min:%dMax:%d\n",min,max);
-    avg = computeAverage_f(Temp ,start);
+    avg = computeAverage_f(tempBuff_i ,start);
     //printf("rx temp data avg:%f\n",avg);
     printf("Temperature Data:- MinValue:%d MaxValue:%d AvgValue:%5.2f \n",min,max,avg);
 	
-   max = soc[0];
-   min = soc[0];
+   max = socBuff_i[0];
+   min = socBuff_i[0];
    start =15;
-    computeMinMax_v(soc, &max ,&min);
+    computeMinMax_v(socBuff_i, &max ,&min);
     //printf(" Min:%dMax:%d\n",min,max);
-    avg = computeAverage_f(soc ,start);
+    avg = computeAverage_f(socBuff_i ,start);
     printf("SOC Data:- MinValue:%d MaxValue:%d AvgValue:%5.2f\n",min,max,avg);
 	
     //printf("rx soc data avg:%f\n",avg);
 	
-   max = chargerate[0];
-   min = chargerate[0];
+   max = chargerateBuff_i[0];
+   min = chargerateBuff_i[0];
    start =15;
-    computeMinMax_v(chargerate, &max ,&min);
+    computeMinMax_v(chargerateBuff_i, &max ,&min);
     //printf("rx chargerate data Min:%dMax:%d\n",min,max);
-    avg = computeAverage_f(chargerate ,start);
+    avg = computeAverage_f(chargerateBuff_i ,start);
     //printf("rx chargerate data avg:%f\n",avg);
     printf("chargerate Data:- MinValue:%d MaxValue:%d AvgValue:%5.2f \n",min,max,avg);
 }
@@ -130,21 +121,20 @@ void receiveConsoleData_v()
 /*!    \brief       func to find reqd substring in comeplete string
  * 
  *     \param       destbuffer ,sourcebuffer ,start index and len
- *     \returns     None
+ *     \returns     destination string
  *
 *//*------------------------------------------------------------------------*/
 
 char* findingsubstring_p (char *dest, const char *src, int stIndx, int len)
 {
-    // extracts `n` characters from the source string starting from `beg` index
-    // and copy them into the destination string
+    /* extracts `n` characters from the source string starting from `beg` index
+     and copy them into the destination string */
     while (len > 0)
     {
-        *dest = *(src + stIndx);
- 
-        dest++;
-        src++;
-        len--;
+         *dest = *(src + stIndx);
+          dest++;
+          src++;
+          len--;
     }
  
     // null terminate destination string
@@ -198,9 +188,8 @@ float computeAverage_f(int currentVal_a[], int valsCnt )
 {
     float arrAvg_f = 0;
     int arrSum_i = 0;
-    int i;
-    
-    for(i=0; i<valsCnt; i++)
+   
+    for(int i=0; i<valsCnt; i++)
     {
      arrSum_i += currentVal_a[i];  /*Compute sum*/
     }
