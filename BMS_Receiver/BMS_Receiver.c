@@ -71,7 +71,7 @@ void receiveConsoleData_v()
    findingsubstring_p(destination, ret, start, len);
    //printf("rx soc data is %s\n", destination);
       soc[index1] = atoi(destination);
-     printf("rx soc data is %d\n", soc[index1]);
+    // printf("rx soc data is %d\n", soc[index1]);
    
      index1 = index1 + 1;
   }  
@@ -99,25 +99,29 @@ void receiveConsoleData_v()
    min = Temp[0];
    start =15;
     computeMinMax_v(Temp, &max ,&min);
-    printf("rx temp data Min:%dMax:%d\n",min,max);
+    //printf("rx temp data Min:%dMax:%d\n",min,max);
     avg = computeAverage_f(Temp ,start);
-    printf("rx temp data avg:%f\n",avg);
+    //printf("rx temp data avg:%f\n",avg);
+    printf("Temperature Data:- MinValue:%d MaxValue:%d AvgValue:%d \n",min,max,avg);
 	
    max = soc[0];
    min = soc[0];
    start =15;
     computeMinMax_v(soc, &max ,&min);
-    printf("rx soc data Min:%dMax:%d\n",min,max);
+    //printf(" Min:%dMax:%d\n",min,max);
     avg = computeAverage_f(soc ,start);
-    printf("rx soc data avg:%f\n",avg);
+    printf("SOC Data:- MinValue:%d MaxValue:%d AvgValue:%d \n",min,max,avg);
+	
+    //printf("rx soc data avg:%f\n",avg);
 	
    max = chargerate[0];
    min = chargerate[0];
    start =15;
     computeMinMax_v(chargerate, &max ,&min);
-    printf("rx chargerate data Min:%dMax:%d\n",min,max);
+    //printf("rx chargerate data Min:%dMax:%d\n",min,max);
     avg = computeAverage_f(chargerate ,start);
-    printf("rx chargerate data avg:%f\n",avg);
+    //printf("rx chargerate data avg:%f\n",avg);
+    printf("chargerate Data:- MinValue:%d MaxValue:%d AvgValue:%d \n",min,max,avg);
 }
 
 /*---------------------------------------------------------------------------*/
