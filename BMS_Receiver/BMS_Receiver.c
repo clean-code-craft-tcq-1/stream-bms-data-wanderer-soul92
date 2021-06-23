@@ -102,7 +102,7 @@ void receiveConsoleData_v()
     //printf("rx temp data Min:%dMax:%d\n",min,max);
     avg = computeAverage_f(Temp ,start);
     //printf("rx temp data avg:%f\n",avg);
-    printf("Temperature Data:- MinValue:%d MaxValue:%d AvgValue:%f \n",min,max,avg);
+    printf("Temperature Data:- MinValue:%d MaxValue:%d AvgValue:%5.2f \n",min,max,avg);
 	
    max = soc[0];
    min = soc[0];
@@ -110,7 +110,7 @@ void receiveConsoleData_v()
     computeMinMax_v(soc, &max ,&min);
     //printf(" Min:%dMax:%d\n",min,max);
     avg = computeAverage_f(soc ,start);
-    printf("SOC Data:- MinValue:%d MaxValue:%d AvgValue:%f \n",min,max,avg);
+    printf("SOC Data:- MinValue:%d MaxValue:%d AvgValue:%5.2f\n",min,max,avg);
 	
     //printf("rx soc data avg:%f\n",avg);
 	
@@ -121,7 +121,7 @@ void receiveConsoleData_v()
     //printf("rx chargerate data Min:%dMax:%d\n",min,max);
     avg = computeAverage_f(chargerate ,start);
     //printf("rx chargerate data avg:%f\n",avg);
-    printf("chargerate Data:- MinValue:%d MaxValue:%d AvgValue:%f \n",min,max,avg);
+    printf("chargerate Data:- MinValue:%d MaxValue:%d AvgValue:%5.2f \n",min,max,avg);
 }
 
 /*---------------------------------------------------------------------------*/
