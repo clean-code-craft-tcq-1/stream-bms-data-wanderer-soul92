@@ -43,7 +43,7 @@ void receiveConsoleData_v()
   if (ret != NULL)
   {
    //printf("rx temp data is %s\n", ret);
-   substring(destination, ret, start, len);
+   findingsubstring_p(destination, ret, start, len);
    //ret2 = strtok(ret, ": ");
    //printf("rx temp1 data is %s\n", destination);
      Temp[index] = atoi(destination);
@@ -73,7 +73,7 @@ void receiveConsoleData_v()
   {
    start =15;
    //printf("rx temp data is %s\n", ret);
-   substring(destination, ret, start, len);
+   findingsubstring_p(destination, ret, start, len);
    //ret2 = strtok(ret, ": ");
    //printf("rx charge rate data is %s\n", destination);
     chargerate[index2++]= atoi(destination);
