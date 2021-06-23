@@ -77,7 +77,7 @@ void receiveConsoleData_v()
   {
    start =15;
    findingsubstring_p(destBuff_a, occrnceRet_p, start, len);
-   chargerate[index2]= atoi(destBuff_a);
+   chargerateBuff_i[index2]= atoi(destBuff_a);
    index2 = index2 + 1;
   } 
     
