@@ -39,7 +39,7 @@ void receiveConsoleData_v()
     { 
         /*Reading recived data from console*/
         gets (rxBuffer_a);
-        printf("rx data is %s\n", rxBuffer_a);
+        //printf("rx data is %s\n", rxBuffer_a);
 
         /*Decoding Temperature data*/      
         rxDataDecoding(rxBuffer_a , tempstr_a ,tempBuff_i,strtIdx);
@@ -92,7 +92,7 @@ void rxDataDecoding(char *rxBuffer, char *tempstr ,int *tempBuff ,int strtIdx)
  char *occrnceRet_p;
  char destBuff_a[25];	
  int len =2;
- 
+   printf("rx data is %s\n", rxBuffer);
   //printf("rx tempstr data is %s\n", tempstr);	
   occrnceRet_p = strstr(rxBuffer, tempstr);
 	
