@@ -94,7 +94,7 @@ void receiveConsoleData_v()
 }
 
 // Function to implement substring function in C
-char* findingsubstring_p (char *dest, const char *src, int stIndx, int len);
+char* findingsubstring_p (char *dest, const char *src, int stIndx, int len)
 {
     // extracts `n` characters from the source string starting from `beg` index
     // and copy them into the destination string
@@ -123,18 +123,18 @@ void  computeMinMax(int currentVal_a[], int *maxValue, int *minValue)
         /* If current element is greater than max */
       if(currentVal_a[i] > *maxValue)
       {
-       *maxValue = Temp[i];
+       *maxValue = currentVal_a[i];
        }
 
        /* If current element is smaller than min */
        if(currentVal_a[i] < *minValue)
        {
-        *minValue = Temp[i];
+        *minValue = currentVal_a[i];
         }
      }
    printf("rx temp data Min:%dMax:%d",*minValue,*maxValue);
 }
-void  computeAverage(int currentValue[], int NumofValues);
+void  computeAverage(int currentValue[], int NumofValues)
 {
 
 
