@@ -45,7 +45,7 @@ void receiveConsoleData_v()
  /*Reading recived data from console*/
   gets (rxBuffer);
     
-  //printf("rx data is %s\n", rxBuffer);
+  printf("rx data is %s\n", rxBuffer);
   
   /*Decoding Temperature data*/      
   ret = strstr(rxBuffer, "\"temperature\": ");
@@ -101,6 +101,22 @@ void receiveConsoleData_v()
     printf("rx temp data Min:%dMax:%d\n",min,max);
     avg = computeAverage_i(Temp ,start);
     printf("rx temp data avg:%d\n",avg);
+	
+   max = soc[0];
+   min = soc[0];
+   start =15;
+    computeMinMax_v(soc, &max ,&min);
+    printf("rx soc data Min:%dMax:%d\n",min,max);
+    avg = computeAverage_i(soc ,start);
+    printf("rx soc data avg:%d\n",avg);
+	
+   max = chargerate[0];
+   min = chargerate[0];
+   start =15;
+    computeMinMax_v(chargerate, &max ,&min);
+    printf("rx chargerate data Min:%dMax:%d\n",min,max);
+    avg = computeAverage_i(chargerate ,start);
+    printf("rx chargerate data avg:%d\n",avg);
 }
 
 /*---------------------------------------------------------------------------*/
