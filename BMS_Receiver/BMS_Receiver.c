@@ -91,7 +91,7 @@ void receiveConsoleData_v()
 }
 void rxDataDecoding(char *rxBuffer, char *tempstr ,int tempBuff[] ,int strtIdx)
 {
- int index =0;
+ static int index =0;
  char *occrnceRet_p;
  char destBuff_a[25];	
  int len =2;
